@@ -52,4 +52,58 @@ python -m pip install -r requirements.txt
 4. Elige **"Python Environments"**.
 5. Selecciona el que dice **`venv`**. 
 
-¡Listo! Ya puedes empezar a programar.
+## 🔀 Guía de Trabajo Colaborativo (Flujo Git)
+
+Para trabajar los 3 al mismo tiempo de forma asíncrona y sin pisarnos los talones, usaremos el flujo de trabajo basado en **Ramas (Branches)** y **Pull Requests**.
+
+🚨 **Regla de oro:** NADIE trabaja ni sube cambios directamente a la rama `main`. La rama `main` es sagrada y solo contiene código que ya funciona perfectamente.
+
+### El flujo de trabajo paso a paso:
+
+#### 1. Actualizar tu computadora (Antes de empezar)
+Antes de escribir una sola línea de código, asegúrate de tener lo último que hayan hecho los demás:
+```bash
+git checkout main
+git pull origin main
+```
+
+#### 2. Crear tu propia Rama
+Crea una rama aislada para tu tarea específica (ejemplo: `juan-limpieza-datos` o `maria-arquitectura-red`):
+```bash
+git checkout -b tu-nombre-tarea
+```
+*(Ahora estás en tu propia rama, aislado de `main`).*
+
+#### 3. Trabajar y hacer Commits
+Modifica los archivos en VS Code. Cuando termines una parte importante, guarda tus cambios:
+```bash
+git add .
+git commit -m "Descripción clara de lo que hiciste"
+```
+
+#### 4. Subir tu Rama a GitHub
+Cuando tu tarea esté lista y quieras que el equipo la una al proyecto principal, sube **tu rama** a la nube:
+```bash
+git push origin tu-nombre-tarea
+```
+
+#### 5. El "Pull Request" (PR)
+1. Ve a la página del repositorio en GitHub.
+2. Verás un botón verde que dice **"Compare & pull request"**. Haz clic en él.
+3. Deja un comentario de lo que hiciste y crea el Pull Request.
+4. Otro miembro del equipo debe revisar el código en GitHub y presionar **"Merge pull request"** para fusionarlo con `main`.
+
+#### 6. Sincronizar de nuevo
+Una vez que tu código fue aceptado y fusionado en GitHub, regresa a tu terminal y actualiza tu computadora para tu siguiente tarea:
+```bash
+git checkout main
+git pull origin main
+```
+
+---
+
+### 💡 3 Consejos de oro para evitar problemas:
+
+1. **Repártanse los archivos:** Para evitar "Conflictos de Fusión" (Merge Conflicts), eviten que dos personas editen *exactamente la misma línea del mismo archivo* al mismo tiempo. Divídanse por archivos o módulos.
+2. **Cuidado con Jupyter Notebooks:** Los archivos `.ipynb` cambian internamente con solo ejecutarlos. Es mejor que cada quien tenga su propio notebook para experimentar (ej. `notebook_juan.ipynb`) y pasen el código final y limpio a los archivos `.py` en la carpeta `src/`.
+3. **Commits descriptivos:** No usen mensajes como "cambios" o "actualización". Usen descripciones útiles como "Agregué la carga del dataset" o "Corregí error de dimensiones en la capa oculta".
